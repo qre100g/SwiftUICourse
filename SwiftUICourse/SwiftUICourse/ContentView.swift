@@ -13,8 +13,9 @@ struct ContentView: View {
             List {
                 
                 NavigationLink("Word Scramble") { WordScramble() }
+                NavigationLink("Animations Demo") { AnimationsDemo() }
                 
-            }.navigationTitle("SwiftUI Course")
+            }.navigationTitle("SwiftUI")
         }
     }
 }
