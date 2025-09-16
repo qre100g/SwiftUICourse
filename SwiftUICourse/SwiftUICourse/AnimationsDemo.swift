@@ -15,6 +15,7 @@ struct AnimationsDemo: View {
                 NavigationLink("Implicit Animation") { ImplicitAnimation() }
                 NavigationLink("Animating Bindings") { AnimatingBindings() }
                 NavigationLink("Explict Animation") { ExplicitAnimation() }
+                NavigationLink("Animation Stack") { AnimationStack() }
                 
             }
             .navigationTitle("Animations")
@@ -92,6 +93,25 @@ struct ExplicitAnimation: View {
         .foregroundStyle(.white)
         .clipShape(.circle)
         .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+    }
+}
+
+struct AnimationStack: View {
+    
+    @State private var enabled = false
+    
+    var body: some View {
+        VStack {
+            Button("Tap me") {
+                enabled.toggle()
+            }
+            .frame(width: 200, height: 200)
+            .background(enabled ? .blue : .red)
+            .animation(nil, value: enabled)
+            .foregroundStyle(.white)
+            .clipShape(.rect(cornerRadius: enabled ? 60 : 0))
+            .animation(.default, value: enabled)
+        }
     }
 }
 
